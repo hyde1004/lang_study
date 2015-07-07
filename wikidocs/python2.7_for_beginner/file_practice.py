@@ -49,3 +49,16 @@ for num in range(num_of_list):
 
 	print("이름 : %s" % name)
 	print("전화번호 : %s" % phone)
+
+# 단순 text 저장하기
+text_book = open('text_book.txt', 'w')
+text_book.write('Hello World\n')
+text_book.write('My name is Hyde. It it nice to meet you.\n')
+text_book.close()
+
+# 객체 (실체) 저장하기 => Error 발생
+# import pickle
+# persons = {'Jack':'010-2222-3333', 'Hyde':'010-1234-1234'}
+# persons_book = open('persons_book.txt', 'w')
+# pickle.dump(persons, persons_book)
+# persons_book.close()
