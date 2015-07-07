@@ -41,5 +41,11 @@ for num in range(num_of_songs):
 
 
 ## 파일읽어 사람 + 전화번호
+address_book = open('address_book.txt', 'r')
+num_of_list = int(address_book.readline())
+for num in range(num_of_list):
+	name = address_book.readline()
+	phone = address_book.readline()
 
-## 줄변 글자수, 전체 글자수 출력 
+	print("이름 : %s" % name)
+	print("전화번호 : %s" % phone)
