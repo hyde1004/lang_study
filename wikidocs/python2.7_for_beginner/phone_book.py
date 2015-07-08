@@ -52,6 +52,18 @@ def del_list(a_phone_book):
 	name = input('What is name? : ')
 	del a_phone_book[name]
 
+def save_list(a_phone_book):
+	print('')
+	print('SAVE PHONE NUMBER')
+	f = open('phone_data.txt', 'w')
+	f.write("%d\n" % len(a_phone_book))
+	for name, phone_num in a_phone_book.items():
+		f.write("%s\n" % name)
+		f.write("%s\n" % phone_num)
+
+	f.close()
+
+
 phone_book = {}
 
 while True:
@@ -63,6 +75,8 @@ while True:
 		input_list(phone_book)
 	elif choice == '3':
 		del_list(phone_book)
+	elif choice == '4':
+		save_list(phone_book)
 	elif choice == '5':
 		break
 	else:
