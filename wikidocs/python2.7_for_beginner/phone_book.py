@@ -16,12 +16,8 @@ history
 
 """
 
-def display_list(a_phone_book):
-	print("NAME\tPHONE NUMBER")
-	for name, phone_num in a_phone_book.items():
-		print("%s\t%s" % (name, phone_num))
-
 def display_menu():
+	print('')
 	print('### MENU ###')
 	print('')
 	print('1. Display list')
@@ -31,17 +27,32 @@ def display_menu():
 	print('5. Quit')
 	print('')
 
+	choice = input('Your choice : ')
+
+	return choice
+
+def display_list(a_phone_book):
+	print('')
+	print('DISPLAY LIST')
+	print("NAME\tPHONE NUMBER")
+	print('====\t============')
+	for name, phone_num in a_phone_book.items():
+		print("%s\t%s" % (name, phone_num))
+
 def input_list(a_phone_book):
+	print('')
+	print('INPUT PHONE NUMBER')
 	name = input('What is name? : ')
 	phone_num = input('What is phone number? : ')
 	a_phone_book[name] = phone_num
 
 phone_book = {}
 
-display_menu()
+
 
 while True:
-	choice = input('Your choice : ')
+	choice = display_menu()
+
 	if choice == '1':
 		display_list(phone_book)
 	elif choice == '2':
