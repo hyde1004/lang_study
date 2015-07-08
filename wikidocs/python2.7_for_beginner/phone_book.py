@@ -31,10 +31,12 @@ def display_menu():
 	print('5. Quit')
 	print('')
 
-phone_book = {}
+def input_list(a_phone_book):
+	name = input('What is name? : ')
+	phone_num = input('What is phone number? : ')
+	a_phone_book[name] = phone_num
 
-phone_book['Jack'] = '010-1234-1234'
-phone_book['Hyde'] = '02-111-1212'
+phone_book = {}
 
 display_menu()
 
@@ -42,6 +44,8 @@ while True:
 	choice = input('Your choice : ')
 	if choice == '1':
 		display_list(phone_book)
+	elif choice == '2':
+		input_list(phone_book)
 	elif choice == '5':
 		break
 	else:
