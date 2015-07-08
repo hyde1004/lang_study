@@ -46,9 +46,13 @@ def input_list(a_phone_book):
 	phone_num = input('What is phone number? : ')
 	a_phone_book[name] = phone_num
 
+def del_list(a_phone_book):
+	print('')
+	print('DELETE PHONE NUMBER')
+	name = input('What is name? : ')
+	del a_phone_book[name]
+
 phone_book = {}
-
-
 
 while True:
 	choice = display_menu()
@@ -57,6 +61,8 @@ while True:
 		display_list(phone_book)
 	elif choice == '2':
 		input_list(phone_book)
+	elif choice == '3':
+		del_list(phone_book)
 	elif choice == '5':
 		break
 	else:
