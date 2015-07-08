@@ -16,7 +16,7 @@ history
 
 """
 
-def display(a_phone_book):
+def display_list(a_phone_book):
 	print("NAME\tPHONE NUMBER")
 	for name, phone_num in a_phone_book.items():
 		print("%s\t%s" % (name, phone_num))
@@ -26,5 +26,5 @@ phone_book = {}
 phone_book['Jack'] = '010-1234-1234'
 phone_book['Hyde'] = '02-111-1212'
 
-display(phone_book)
+display_list(phone_book)
 
