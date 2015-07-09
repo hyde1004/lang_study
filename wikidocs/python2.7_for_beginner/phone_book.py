@@ -16,6 +16,10 @@ history
 
 """
 
+def sort_list(a_phone_book):
+	sorted_keys = sorted(list(a_phone_book.keys()))
+	return sorted_keys
+
 def display_menu():
 	print('')
 	print('### MENU ###')
@@ -38,6 +42,11 @@ def display_list(a_phone_book):
 	print('====\t============')
 	for name, phone_num in a_phone_book.items():
 		print("%s\t%s" % (name, phone_num))
+
+	print('==== Sorted list ====\n')
+	sorted_list = sort_list(a_phone_book)
+	for name in sorted_list:
+		print("%s\t%s" % (name, a_phone_book[name]))
 
 def input_list(a_phone_book):
 	print('')
