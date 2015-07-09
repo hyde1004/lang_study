@@ -28,7 +28,8 @@ def display_menu():
 	print('2. Input phone number')
 	print('3. Delete phone number')
 	print('4. Save list')
-	print('5. Quit')
+	print('5. Load list')
+	print('6. Quit')
 	print('')
 
 	choice = input('Your choice : ')
@@ -72,6 +73,19 @@ def save_list(a_phone_book):
 
 	f.close()
 
+def load_list(a_phone_book):
+	print('')
+	print('LOAD PHONE NUMBER')
+	f = open('phone_data.txt', 'r')
+	count = int(f.readline())
+	for i in range(count):
+		name = f.readline().rstrip()
+		phone_num = f.readline().rstrip()
+
+		#a_phone_book = {}
+		a_phone_book[name] = phone_num
+
+	f.close()
 
 phone_book = {}
 
@@ -87,6 +101,8 @@ while True:
 	elif choice == '4':
 		save_list(phone_book)
 	elif choice == '5':
+		load_list(phone_book)
+	elif choice == '6':
 		break
 	else:
 		pass
