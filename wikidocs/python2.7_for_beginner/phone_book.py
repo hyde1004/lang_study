@@ -80,9 +80,10 @@ def load_list(a_phone_book):
 	count = int(f.readline())
 	for i in range(count):
 		name = f.readline().rstrip()
-		phone_num = f.readline().rstrip()
+		phone_num = f.readline().rstrip() 
+		# rstrip() 문자열의 오른쪽 잘라낸다. chars가 지정되지 않으면 공백문자 제거
 
-		#a_phone_book = {}
+		global a_phone_book = {}
 		a_phone_book[name] = phone_num
 
 	f.close()
