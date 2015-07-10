@@ -14,10 +14,13 @@ history
    정렬을 해서 출력하면 되기 때문에 dict로 저장하는게 더 나아보인다.
    구조도 더 단순해진다.
 
+ - 함수의 인자로 받던 것을 매개변수 없이 전역변수로 처리한다.
+   모든 함수가 동일한 변수를 가르키는 것이므로..
+
 """
 
-def sort_list(a_phone_book):
-	sorted_keys = sorted(list(a_phone_book.keys()))
+def sort_list(unsorted_keys):
+	sorted_keys = sorted(list(unsorted_keys.keys()))
 	return sorted_keys
 
 def display_menu():
@@ -36,55 +39,59 @@ def display_menu():
 
 	return choice
 
-def display_list(a_phone_book):
+def display_list():
 	print('')
 	print('DISPLAY LIST')
 	print("NAME\tPHONE NUMBER")
 	print('====\t============')
-	for name, phone_num in a_phone_book.items():
+	for name, phone_num in phone_book.items():
 		print("%s\t%s" % (name, phone_num))
 
 	print('==== Sorted list ====\n')
-	sorted_list = sort_list(a_phone_book)
+	sorted_list = sort_list(phone_book)
 	for name in sorted_list:
-		print("%s\t%s" % (name, a_phone_book[name]))
+		print("%s\t%s" % (name, phone_book[name]))
 
-def input_list(a_phone_book):
+def input_list():
 	print('')
 	print('INPUT PHONE NUMBER')
 	name = input('What is name? : ')
 	phone_num = input('What is phone number? : ')
-	a_phone_book[name] = phone_num
+	phone_book[name] = phone_num
 
-def del_list(a_phone_book):
+def del_list():
 	print('')
 	print('DELETE PHONE NUMBER')
 	name = input('What is name? : ')
-	del a_phone_book[name]
+	del phone_book[name]
 
-def save_list(a_phone_book):
+def save_list():
 	print('')
 	print('SAVE PHONE NUMBER')
 	f = open('phone_data.txt', 'w')
-	f.write("%d\n" % len(a_phone_book))
-	for name, phone_num in a_phone_book.items():
+	f.write("%d\n" % len(phone_book))
+	for name, phone_num in phone_book.items():
 		f.write("%s\n" % name)
 		f.write("%s\n" % phone_num)
 
 	f.close()
 
-def load_list(a_phone_book):
+def load_list():
 	print('')
 	print('LOAD PHONE NUMBER')
 	f = open('phone_data.txt', 'r')
 	count = int(f.readline())
+
+	global phone_book # global을 명시하지 않으면, 여기의 phone_book은 지역변수로 취급된다.
+
+	phone_book = {}  # 기존 데이터 초기화
+
 	for i in range(count):
 		name = f.readline().rstrip()
 		phone_num = f.readline().rstrip() 
-		# rstrip() 문자열의 오른쪽 잘라낸다. chars가 지정되지 않으면 공백문자 제거
+		# 문장 끝의 '\n'을 rstrip()을 이용해서 잘라낸다.
 
-		global a_phone_book = {}
-		a_phone_book[name] = phone_num
+		phone_book[name] = phone_num
 
 	f.close()
 
@@ -94,15 +101,15 @@ while True:
 	choice = display_menu()
 
 	if choice == '1':
-		display_list(phone_book)
+		display_list()
 	elif choice == '2':
-		input_list(phone_book)
+		input_list()
 	elif choice == '3':
-		del_list(phone_book)
+		del_list()
 	elif choice == '4':
-		save_list(phone_book)
+		save_list()
 	elif choice == '5':
-		load_list(phone_book)
+		load_list()
 	elif choice == '6':
 		break
 	else:
