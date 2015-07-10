@@ -1,4 +1,5 @@
 # 파일 쓰기 연습
-f = open('test.txt', 'w')
-f.write('Hello World!\n')
-f.close()
+notebook = open('test.txt', 'w')
+notebook.write('Hello World!\n')
+notebook.write('My name is Hyde. It\'s nice to meet you\n')
+notebook.close()
