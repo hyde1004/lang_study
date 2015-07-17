@@ -42,10 +42,7 @@ from pandas import Series, DataFrame
 
 data = { 'bond':bond, 'kodex 200':kodex}
 for idx, val in enumerate(bond):
-	if idx == 0:
-		bond_profit.append(0)
-	else:
-		bond_profit.append(bond[idx] - bond[0])
+	bond_profit.append( round((bond[idx] - bond[0])/bond[0]*100, 2))
 
 data['bond_profit'] = bond_profit
 frame3 = DataFrame(data, index)
