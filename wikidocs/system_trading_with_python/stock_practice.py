@@ -15,8 +15,11 @@ kosef_bond_10years = web.DataReader('148070.KS', 'yahoo', start)
 index = []
 bond = []
 bond_profit = []
+bond_profit_diff = []
 kodex = []
 kodex_profit = []
+kodex_profit_diff = []
+
 import calendar
 for year in range(2012, 2015):
 	for month in range(1, 13):
@@ -44,13 +47,24 @@ data = { 'bond':bond, 'kodex 200':kodex}
 
 for idx, val in enumerate(bond):
 	bond_profit.append( round((bond[idx] - bond[0])/bond[0]*100, 2))
+	if idx == 0:
+		bond_profit_diff.append(0)
+	else:
+		bond_profit_diff.append(round((bond[idx] - bond[idx-1])/bond[idx-1]*100, 2))
 
 for idx, val in enumerate(kodex):
 	kodex_profit.append( round((kodex[idx] - kodex[0])/kodex[0]*100, 2))
+	if idx == 0:
+		kodex_profit_diff.append(0)
+	else:
+		kodex_profit_diff.append(round((kodex[idx] - kodex[idx-1])/kodex[idx-1]*100, 2))
 
 
 data['bond_profit'] = bond_profit
+data['bond_profit_diff'] = bond_profit_diff
+
 data['kodex_200_profit'] = kodex_profit
+data['kodex_200_profit_diff'] = kodex_profit_diff
 
 frame3 = DataFrame(data, index)
 
