@@ -69,3 +69,14 @@ data['kodex_200_profit_diff'] = kodex_profit_diff
 frame3 = DataFrame(data, index)
 
 print(frame3)
+
+import csv
+csv_file = open('result.csv', 'w')
+cw = csv.writer(csv_file, delimiter =',')
+cw.writerow(['Date', 'Bond', 'KODEX'])
+
+for idx, val in enumerate(index):
+	cw.writerow([index[idx], bond[idx], kodex[idx]])
+
+
+
