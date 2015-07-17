@@ -16,7 +16,7 @@ index = []
 bond = []
 bond_profit = []
 kodex = []
-kodex_profilt = []
+kodex_profit = []
 import calendar
 for year in range(2012, 2015):
 	for month in range(1, 13):
@@ -41,10 +41,17 @@ for year in range(2012, 2015):
 from pandas import Series, DataFrame
 
 data = { 'bond':bond, 'kodex 200':kodex}
+
 for idx, val in enumerate(bond):
 	bond_profit.append( round((bond[idx] - bond[0])/bond[0]*100, 2))
 
+for idx, val in enumerate(kodex):
+	kodex_profit.append( round((kodex[idx] - kodex[0])/kodex[0]*100, 2))
+
+
 data['bond_profit'] = bond_profit
+data['kodex_200_profit'] = kodex_profit
+
 frame3 = DataFrame(data, index)
 
 print(frame3)
